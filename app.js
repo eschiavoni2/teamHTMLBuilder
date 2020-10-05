@@ -1,4 +1,5 @@
 const Manager = require("./lib/Manager");
+const Employee = require("./lib/Employee");
 const Engineer = require("./lib/Engineer");
 const Intern = require("./lib/Intern");
 const inquirer = require("inquirer");
@@ -31,19 +32,40 @@ function mainMenu() {
             const manager = new Manager(answers.id)
             teamMembers.push(manager)
             idArray.push(answers.managerID)
+
+            inquirer.prompt({
+                type: "input",
+                name: "email",
+                message: "What is your email?",
+                validate: answer => {
+                    if (answer !== ""){
+                        return true;
+                    }
+                    return "Please enter your email."
+                },
+                // type: "input",
+                // name: "officeNumber"
+            }).then(answer =>{
+                const manager = new Manager(answers.email)
+                teamMembers.push(manager)
+                emailArray.push(answers.managerID)
+
+            })
         })
     }
 
-    {
-        type: "list",
-        name: "memberChoice",
-        message: "Which type of team member would you like to add?",
-        choices: [
-            "Engineer",
-            "Intern",
-            "I don't want to add any more team members"
-        ].then
-    }
+    
+
+    // {
+    //     type: "list",
+    //     name: "memberChoice",
+    //     message: "Which type of team member would you like to add?",
+    //     choices: [
+    //         "Engineer",
+    //         "Intern",
+    //         "I don't want to add any more team members"
+    //     ].then
+    // }
     createManager()
 }
 
