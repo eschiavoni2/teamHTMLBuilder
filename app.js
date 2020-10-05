@@ -29,9 +29,9 @@ function mainMenu() {
                 // if Array.includes can validate
             }
         }]).then(answer =>{
-            const manager = new Manager(answers.id)
+            const manager = new Manager(answer.id)
             teamMembers.push(manager)
-            idArray.push(answers.managerID)
+            idArray.push(answer.managerID)
 
             inquirer.prompt({
                 type: "input",
@@ -46,9 +46,9 @@ function mainMenu() {
                 // type: "input",
                 // name: "officeNumber"
             }).then(answer =>{
-                const manager = new Manager(answers.email)
+                (answer.email)
                 teamMembers.push(manager)
-                emailArray.push(answers.managerID)
+                idArray.push(answer.managerID)
 
             })
         })
