@@ -216,23 +216,16 @@ function createEngineer() {
         })
     }
 
+    mainMenu()
 
+    .then(function (answer) {
+        const html = Employee(answers);
+        fs.writeFile('./lib/Employee.md', html, function (err) {
+            if (err) throw err;
+            console.log("Success!");
+        });
+    })
 
-
-// {
-//     type: "list",
-//     name: "memberChoice",
-//     message: "Which type of team member would you like to add?",
-//     choices: [
-//         "Engineer",
-//         "Intern",
-//         "I don't want to add any more team members"
-//     ].then
-// }
-// createManager()
-
-
-mainMenu()
 // Write code to use inquirer to gather information about the development team members,
 // and to create objects for each team member (using the correct classes as blueprints!)
 
