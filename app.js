@@ -159,9 +159,6 @@ function createIntern() {
         });
     }
   
-
-
-
 function createEngineer() {
         console.log("Please fill out Engineer information");
         inquirer.prompt([{
