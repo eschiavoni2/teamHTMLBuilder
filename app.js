@@ -53,7 +53,7 @@ function mainMenu() {
             }
 
         }]).then(answer => {
-            const manager = new Manager(answer.managerName, answer.managerID, answer.managerEmail, answer.managerNumber)
+            const manager = new Manager(answer.managerName, answer.managerEmail, answer.managerNumber)
             teamMembers.push(manager)
             idArray.push(answer.managerID)
             nextTeamMember();
@@ -128,7 +128,7 @@ function createIntern() {
         }
 
     }]).then(answer => {
-        const intern = new Intern(answer.internName, answer.internID, answer.internRole, answer.internSchool)
+        const intern = new Intern(answer.internName, answer.internRole, answer.internSchool)
         teamMembers.push(intern)
         idArray.push(answer.internID)
         nextTeamMember();
@@ -178,7 +178,7 @@ function createEngineer() {
         }
 
     }]).then(answer => {
-        const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerRole, answer.engineerGitHub)
+        const engineer = new Engineer(answer.engineerName, answer.engineerRole, answer.engineerGitHub)
         teamMembers.push(engineer)
         idArray.push(answer.engineerID)
         nextTeamMember();
