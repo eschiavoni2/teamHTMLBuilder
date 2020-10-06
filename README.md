@@ -18,8 +18,6 @@ so that I have quick access to emails and GitHub profiles
 The dependencies are, [jest](https://jestjs.io/) for running the provided tests, and [inquirer](https://www.npmjs.com/package/inquirer) for collecting input from the user.
 
 
-```
-
 ### User input
 
 The project will prompt the user to build an engineering team. An engineering
