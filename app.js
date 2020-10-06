@@ -80,9 +80,9 @@ function nextTeamMember() {
         type: "list",
         name: "memberChoice",
         message: "Which team member would you like to add?",
-        choices: ["Intern", "Intern", "I don't want another team member."],
+        choices: ["Intern", "Engineer", "I don't want another team member."],
     }]).then(answer => {
-        console.log(answers.memberChoice);
+        console.log(answer.memberChoice);
         if (answer.memberChoice === "Intern") {
             createIntern();
         }
@@ -98,12 +98,124 @@ function nextTeamMember() {
 }
 
 function createIntern() {
+        console.log("Please fill out Intern information")
+        inquirer.prompt([{
+            type: "input",
+            name: "internName",
+            message: "What is your intern's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name"
+                // if Array.includes can validate
+            },
+        },
+        {
+            type: "number",
+            name: "internID",
+            message: "What is your intern's ID?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter ID."
+            },
+        },
+          {  
+            
+            type: "input",
+            name: "internRole",
+            message: "What is your role?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter role."
+            },
+        },
+          {  
+            type: "input",
+            name: "internSchool",
+            message: "What school did you attend?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter school."
+            }
+            
+        }]).then(answer => {
+            const intern = new Intern(answer.internName, answer.internID, answer.internRole, answer.internSchool)
+            teamMembers.push(intern)
+            idArray.push(answer.internID)
+            nextTeamMember();
+            console.log(teamMembers)
 
-}
+        })
+    }
+  
+
+
 
 function createEngineer() {
-    
-}
+        console.log("Please fill out Engineer information")
+        inquirer.prompt([{
+            type: "input",
+            name: "engineerName",
+            message: "What is your Engineer's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name"
+                // if Array.includes can validate
+            },
+        },
+        {
+            type: "number",
+            name: "engineerID",
+            message: "What is your engineer's ID?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter ID."
+            },
+        },
+          {  
+            
+            type: "input",
+            name: "engineerRole",
+            message: "What is your role?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter role."
+            },
+        },
+          {  
+            type: "input",
+            name: "engineerGitHub",
+            message: "What school did you attend?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter school."
+            }
+            
+        }]).then(answer => {
+            const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerRole, answer.engineerGitHub)
+            teamMembers.push(engineer)
+            idArray.push(answer.engineerID)
+            nextTeamMember();
+            console.log(teamMembers)
+
+        })
+    }
+
 
 
 
