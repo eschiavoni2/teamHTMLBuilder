@@ -28,7 +28,9 @@ function mainMenu() {
                 return "Please enter a name"
                 // if Array.includes can validate
             },
-            type: "input",
+        },
+        {
+            type: "number",
             name: "managerID",
             message: "What is your manager's ID?",
             validate: answer => {
@@ -37,6 +39,9 @@ function mainMenu() {
                 }
                 return "Please enter ID."
             },
+        },
+          {  
+            
             type: "input",
             name: "managerEmail",
             message: "What is your manager's email?",
@@ -46,7 +51,9 @@ function mainMenu() {
                 }
                 return "Please enter email."
             },
-            type: "input",
+        },
+          {  
+            type: "number",
             name: "managerNumber",
             message: "What is your manager's number?",
             validate: answer => {
@@ -55,16 +62,47 @@ function mainMenu() {
                 }
                 return "Please enter number."
             }
-
+            
         }]).then(answer => {
-            const manager = new Manager(answer.managerName, answer.ManagerID, answer.managerEmail, answer.managerNumber)
+            const manager = new Manager(answer.managerName, answer.managerID, answer.managerEmail, answer.managerNumber)
             teamMembers.push(manager)
             idArray.push(answer.managerID)
+            nextTeamMember();
             console.log(teamMembers)
 
         })
     }
-    createManager() 
+    createManager()
+}
+
+function nextTeamMember() {
+    inquirer.prompt([{
+        type: "list",
+        name: "memberChoice",
+        message: "Which team member would you like to add?",
+        choices: ["Intern", "Intern", "I don't want another team member."],
+    }]).then(answer => {
+        console.log(answers.memberChoice);
+        if (answer.memberChoice === "Intern") {
+            createIntern();
+        }
+        if (answer.memberChoice === "Engineer") {
+            createEngineer();
+        }
+        if (answer.memberChoice === "I don't want another team member") {
+            console.log("Finalize team.")
+            console.log(idArray);
+            console.log(teamMembers);
+    }
+    })
+}
+
+function createIntern() {
+
+}
+
+function createEngineer() {
+    
 }
 
 
