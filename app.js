@@ -219,7 +219,7 @@ function createEngineer() {
     mainMenu()
 
     .then(function (answer) {
-        const html = Employee(answers);
+        const html = Employee(answer);
         fs.writeFile('./lib/Employee.md', html, function (err) {
             if (err) throw err;
             console.log("Success!");
