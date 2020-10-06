@@ -16,7 +16,7 @@ const idArray = [];
 
 function mainMenu() {
     function createManager() {
-        console.log("Please Build your Team")
+        console.log("Please Build your Team");
         inquirer.prompt([{
             type: "input",
             name: "managerName",
@@ -25,7 +25,7 @@ function mainMenu() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter a name"
+                return "Please enter a name";
                 // if Array.includes can validate
             },
         },
@@ -38,7 +38,7 @@ function mainMenu() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter email."
+                return "Please enter email.";
             },
         },
         {
@@ -49,19 +49,19 @@ function mainMenu() {
                 if (answer !== "") {
                     return true;
                 }
-                return "Please enter number."
+                return "Please enter number.";
             }
 
         }]).then(answer => {
-            const manager = new Manager(answer.managerName, answer.managerEmail, answer.managerNumber)
-            teamMembers.push(manager)
-            idArray.push(answer.managerID)
+            const manager = new Manager(answer.managerName, answer.managerEmail, answer.managerNumber);
+            teamMembers.push(manager);
+            idArray.push(answer.managerID);
             nextTeamMember();
-            console.log(teamMembers)
+            console.log(teamMembers);
 
-        })
+        });
     }
-    createManager()
+    createManager();
 }
 
 function nextTeamMember() {
@@ -79,7 +79,7 @@ function nextTeamMember() {
             createEngineer();
         }
         if (answer.memberChoice === "I don't want another team member") {
-            console.log("Finalize team.")
+            console.log("Finalize team.");
             console.log(idArray);
             console.log(teamMembers);
             fs.writeFile(outputPath, render(teamMembers), "utf-8", function (err) {
@@ -87,11 +87,11 @@ function nextTeamMember() {
                 console.log("Success!");
             });
         }
-    })
+    });
 }
 
 function createIntern() {
-    console.log("Please fill out Intern information")
+    console.log("Please fill out Intern information");
     inquirer.prompt([{
         type: "input",
         name: "internName",
@@ -100,7 +100,7 @@ function createIntern() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter a name"
+            return "Please enter a name";
             // if Array.includes can validate
         },
     },
@@ -113,7 +113,7 @@ function createIntern() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter role."
+            return "Please enter role.";
         },
     },
     {
@@ -124,24 +124,24 @@ function createIntern() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter school."
+            return "Please enter school.";
         }
 
     }]).then(answer => {
-        const intern = new Intern(answer.internName, answer.internRole, answer.internSchool)
-        teamMembers.push(intern)
-        idArray.push(answer.internID)
+        const intern = new Intern(answer.internName, answer.internRole, answer.internSchool);
+        teamMembers.push(intern);
+        idArray.push(answer.internID);
         nextTeamMember();
-        console.log(teamMembers)
+        console.log(teamMembers);
 
-    })
+    });
 }
 
 
 
 
 function createEngineer() {
-    console.log("Please fill out Engineer information")
+    console.log("Please fill out Engineer information");
     inquirer.prompt([{
         type: "input",
         name: "engineerName",
@@ -150,7 +150,7 @@ function createEngineer() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter a name"
+            return "Please enter a name";
             // if Array.includes can validate
         },
     },
@@ -163,7 +163,7 @@ function createEngineer() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter role."
+            return "Please enter role.";
         },
     },
     {
@@ -174,43 +174,17 @@ function createEngineer() {
             if (answer !== "") {
                 return true;
             }
-            return "Please enter school."
+            return "Please enter school.";
         }
 
     }]).then(answer => {
-        const engineer = new Engineer(answer.engineerName, answer.engineerRole, answer.engineerGitHub)
-        teamMembers.push(engineer)
-        idArray.push(answer.engineerID)
+        const engineer = new Engineer(answer.engineerName, answer.engineerRole, answer.engineerGitHub);
+        teamMembers.push(engineer);
+        idArray.push(answer.engineerID);
         nextTeamMember();
-        console.log(teamMembers)
+        console.log(teamMembers);
 
-    })
-    buildTeam()
+    });
 }
 
-mainMenu()
-
-
-
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
-
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
+mainMenu();
