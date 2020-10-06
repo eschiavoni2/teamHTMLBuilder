@@ -37,7 +37,7 @@ The project will generate a `team.html` page in the `output` directory, that dis
 
   * Role-specific property (School, link to GitHub profile, or office number)
 
-![Team Gif](./assets/Team.gif) 
+![Team Gif](Team.gif) 
 
 ## Created by:
 
