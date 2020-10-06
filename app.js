@@ -30,7 +30,18 @@ function mainMenu() {
             },
         },
         {
-
+            type: "number",
+            name: "managerID",
+            message: "What is your manager's ID?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter ID.";
+            },
+        },
+          {  
+            
             type: "input",
             name: "managerEmail",
             message: "What is your manager's email?",
@@ -41,7 +52,7 @@ function mainMenu() {
                 return "Please enter email.";
             },
         },
-        {
+          {  
             type: "number",
             name: "managerNumber",
             message: "What is your manager's number?",
@@ -51,9 +62,9 @@ function mainMenu() {
                 }
                 return "Please enter number.";
             }
-
+            
         }]).then(answer => {
-            const manager = new Manager(answer.managerName, answer.managerEmail, answer.managerNumber);
+            const manager = new Manager(answer.managerName, answer.managerID, answer.managerEmail, answer.managerNumber);
             teamMembers.push(manager);
             idArray.push(answer.managerID);
             nextTeamMember();
@@ -83,108 +94,132 @@ function nextTeamMember() {
             console.log(idArray);
             console.log(teamMembers);
             fs.writeFile(outputPath, render(teamMembers), "utf-8", function (err) {
-                if (err) throw err;
-                console.log("Success!");
-            });
-        }
+                           if (err) throw err;
+                           console.log("Success!");
+                       });
+    }
     });
 }
 
 function createIntern() {
-    console.log("Please fill out Intern information");
-    inquirer.prompt([{
-        type: "input",
-        name: "internName",
-        message: "What is your intern's name?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
-            }
-            return "Please enter a name";
-            // if Array.includes can validate
+        console.log("Please fill out Intern information");
+        inquirer.prompt([{
+            type: "input",
+            name: "internName",
+            message: "What is your intern's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name";
+                // if Array.includes can validate
+            },
         },
-    },
-    {
-
-        type: "input",
-        name: "internRole",
-        message: "What is your role?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
-            }
-            return "Please enter role.";
+        {
+            type: "number",
+            name: "internID",
+            message: "What is your intern's ID?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter ID.";
+            },
         },
-    },
-    {
-        type: "input",
-        name: "internSchool",
-        message: "What school did you attend?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
+          {  
+            
+            type: "input",
+            name: "internRole",
+            message: "What is your role?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter role.";
+            },
+        },
+          {  
+            type: "input",
+            name: "internSchool",
+            message: "What school did you attend?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter school.";
             }
-            return "Please enter school.";
-        }
+            
+        }]).then(answer => {
+            const intern = new Intern(answer.internName, answer.internID, answer.internRole, answer.internSchool);
+            teamMembers.push(intern);
+            idArray.push(answer.internID);
+            nextTeamMember();
+            console.log(teamMembers);
 
-    }]).then(answer => {
-        const intern = new Intern(answer.internName, answer.internRole, answer.internSchool);
-        teamMembers.push(intern);
-        idArray.push(answer.internID);
-        nextTeamMember();
-        console.log(teamMembers);
-
-    });
-}
-
+        });
+    }
+  
 
 
 
 function createEngineer() {
-    console.log("Please fill out Engineer information");
-    inquirer.prompt([{
-        type: "input",
-        name: "engineerName",
-        message: "What is your Engineer's name?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
-            }
-            return "Please enter a name";
-            // if Array.includes can validate
+        console.log("Please fill out Engineer information");
+        inquirer.prompt([{
+            type: "input",
+            name: "engineerName",
+            message: "What is your Engineer's name?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter a name";
+                // if Array.includes can validate
+            },
         },
-    },
-    {
-
-        type: "input",
-        name: "engineerRole",
-        message: "What is your role?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
-            }
-            return "Please enter role.";
+        {
+            type: "number",
+            name: "engineerID",
+            message: "What is your engineer's ID?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter ID.";
+            },
         },
-    },
-    {
-        type: "input",
-        name: "engineerGitHub",
-        message: "What school did you attend?",
-        validate: answer => {
-            if (answer !== "") {
-                return true;
+          {  
+            
+            type: "input",
+            name: "engineerRole",
+            message: "What is your role?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter role.";
+            },
+        },
+          {  
+            type: "input",
+            name: "engineerGitHub",
+            message: "What school did you attend?",
+            validate: answer => {
+                if (answer !== "") {
+                    return true;
+                }
+                return "Please enter school.";
             }
-            return "Please enter school.";
-        }
+            
+        }]).then(answer => {
+            const engineer = new Engineer(answer.engineerName, answer.engineerID, answer.engineerRole, answer.engineerGitHub);
+            teamMembers.push(engineer);
+            idArray.push(answer.engineerID);
+            nextTeamMember();
+            console.log(teamMembers);
 
-    }]).then(answer => {
-        const engineer = new Engineer(answer.engineerName, answer.engineerRole, answer.engineerGitHub);
-        teamMembers.push(engineer);
-        idArray.push(answer.engineerID);
-        nextTeamMember();
-        console.log(teamMembers);
+        });
+    }
 
-    });
-}
+    mainMenu();
 
-mainMenu();
+ 
